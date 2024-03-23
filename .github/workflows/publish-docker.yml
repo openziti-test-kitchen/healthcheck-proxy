@@ -1,0 +1,19 @@
+name: Publish Docker Images
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if PR is labeled as "publish docker"
+        id: check_label 
+        run: echo "::set-output name=publish::$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish$')"
+
+      - name: Execute Script
+        if: steps.check_label.outputs.publish == '1'
+        run: |
+          ./your-script.sh
