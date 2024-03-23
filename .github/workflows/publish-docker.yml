@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: echo a thing or two
-        run: echo $(jq -r '.label.name' $GITHUB_EVENT_PATH)
+        run: cat $GITHUB_EVENT_PATH #echo $(jq -r '.label.name' $GITHUB_EVENT_PATH)
         
       - name: Check if PR is labeled as "publish docker"
         id: check_label 
