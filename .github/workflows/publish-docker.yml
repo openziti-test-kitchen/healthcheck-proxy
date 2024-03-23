@@ -1,4 +1,4 @@
-name: Publish PR
+name: Publish Docker Images
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Check if PR is labeled as "publish docker"
-        id: check_label
+        id: check_label 
         run: echo "::set-output name=publish::$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish$')"
 
       - name: Execute Script
