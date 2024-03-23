@@ -6,6 +6,9 @@ hostname. Where you would traditionally execute an HTTP healthcheck to an endpoi
 "https://some.server/some/path", these underlay-based healthchecks become useless when adapting to use 
 application-embedded zero trust as there are no longer listening ports on the underlay network. 
 
+This project allows you to inspect the incoming hostname from the underlay network, convert that hostname to an 
+OpenZiti service, then dial/connect to that service via OpenZiti to perform the healthcheck.
+
 At this point there will be a few options:
 * adapt the application performing the healthcheck to OpenZiti and application embedded zero trust
 * inject a tunneler on the host or near the host and allow all traffic to be proxied in the normal ways
