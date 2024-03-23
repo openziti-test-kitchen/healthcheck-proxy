@@ -93,14 +93,13 @@ Breaking down each section we see:
 * `--network-alias support-scheduler.edgex.ziti`. See above.
 * `openziti/healthcheck-proxy`. This is the container for docker to execute
 
-
-
-
-ziti edge create identity health -o health.jwt -a edgex.app-rules-engine-clients,edgex.device-rest-clients,edgex.core-command-clients,edgex.core-data-clients,edgex.core-metadata-clients,edgex.device-virtual-clients,edgex.rules-engine-clients,edgex.support-notifications-clients,edgex.support-scheduler-clients,edgex.sys-mgmt-agent-clients
-
-
-
-
-
-
-
+## Example of Creating/Authorizing an Identity
+This is just an example for how the identity for EdgeX Foundry was generated:
+```
+ziti edge create identity \
+  health -o health.jwt \
+  -a 'edgex.app-rules-engine-clients,edgex.device-rest-clients,edgex.core-command-clients,'\
+'edgex.core-data-clients,edgex.core-metadata-clients,edgex.device-virtual-clients,'\
+'edgex.rules-engine-clients,edgex.support-notifications-clients,edgex.support-scheduler-clients,'\
+'edgex.sys-mgmt-agent-clients'
+```
