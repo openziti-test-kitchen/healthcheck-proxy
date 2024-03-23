@@ -21,17 +21,17 @@ supported.
 
 The following options are available by setting a corresponding environment variable
 
-| Environment Variable | Purpose                                                                                                       |
-|--|---------------------------------------------------------------------------------------------------------------|
-|`OPENZITI_HEALTHCHECK_IDENTITY`| The path to the identity file, used to proxy healthchecks. Default: `/opt/openziti/healthcheck/identity.json` |
-|`OPENZITI_HEALTHCHECK_PROXY_PORT`| This port the process will listen on for incoming HTTP requests. Default: `2171`                              |
-|`OPENZITI_HEALTHCHECK_ALLOWED_PATH`| The allowed path to proxy. Must be specified else the default `^[.*]$` is used which matches nothing.         |
-|`OPENZITI_HEALTHCHECK_ALLOWED_VERB`| The allowed HTTP verb(s). Default: `GET`                                                                      |
-|`OPENZITI_HEALTHCHECK_SEARCH_REGEX`| The part of the host to match. Default: `(.*)`                                                                |
-|`OPENZITI_HEALTHCHECK_REPLACE_REGEX`| The replacement pattern for the host. Default: `$1`                                                           |
-|`OPENZITI_HEALTHCHECK_DEBUG`| Use "debug" to turn on debug mode, showing the proxied requests. Default: "info"                             |
-|`OPENZITI_HEALTHCHECK_CERT`| A certificate to use when serving HTTPS. Default: `""`                                                        |
-|`OPENZITI_HEALTHCHECK_KEY`| The key to use with the certificate specified in `OPENZITI_HEALTHCHECK_CERT`. Default: `""`                   |
+| Environment Variable                      | Purpose                                                                                                       |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| `OPENZITI_HEALTHCHECK_IDENTITY`           | The path to the identity file, used to proxy healthchecks. Default: `/opt/openziti/healthcheck/identity.json` |
+| `OPENZITI_HEALTHCHECK_PROXY_PORT`         | This port the process will listen on for incoming HTTP requests. Default: `2171`                              |
+| `OPENZITI_HEALTHCHECK_ALLOWED_PATH`       | The allowed path to proxy. Must be specified else the default `^[.*]$` is used which matches nothing.         |
+| `OPENZITI_HEALTHCHECK_ALLOWED_VERB_REGEX` | A regex that controls the allowed HTTP verb(s). Default: `GET`                                            |
+| `OPENZITI_HEALTHCHECK_SEARCH_REGEX`       | The part of the host to match. Default: `(.*)`                                                                |
+| `OPENZITI_HEALTHCHECK_REPLACE_REGEX`      | The replacement pattern for the host. Default: `$1`                                                           |
+| `OPENZITI_HEALTHCHECK_DEBUG`              | Use "debug" to turn on debug mode, showing the proxied requests. Default: "info"                              |
+| `OPENZITI_HEALTHCHECK_CERT`               | A certificate to use when serving HTTPS. Default: `""`                                                        |
+| `OPENZITI_HEALTHCHECK_KEY`                | The key to use with the certificate specified in `OPENZITI_HEALTHCHECK_CERT`. Default: `""`                   |
 
 ## Example of Running as Docker
 

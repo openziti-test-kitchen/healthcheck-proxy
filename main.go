@@ -21,7 +21,7 @@ func main() {
 	port := getEnvOrDefault("OPENZITI_HEALTHCHECK_PROXY_PORT", "2171")
 	allowedPathRegex := getEnvOrDefault("OPENZITI_HEALTHCHECK_ALLOWED_PATH", "^[.*]$")
 	slog.Info("allowed path regex set", "regex", allowedPathRegex)
-	allowedVerbRegex := getEnvOrDefault("OPENZITI_HEALTHCHECK_ALLOWED_VERB", "GET")
+	allowedVerbRegex := getEnvOrDefault("OPENZITI_HEALTHCHECK_ALLOWED_VERB_REGEX", "GET")
 	slog.Info("allowed verb regex set", "regex", allowedVerbRegex)
 	searchPattern := getEnvOrDefault("OPENZITI_HEALTHCHECK_SEARCH_REGEX", "(.*)")
 	replacePattern := getEnvOrDefault("OPENZITI_HEALTHCHECK_REPLACE_REGEX", "$1")
