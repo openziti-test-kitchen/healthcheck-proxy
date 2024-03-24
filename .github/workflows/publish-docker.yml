@@ -14,7 +14,15 @@ jobs:
       - name: echo a thing or two
         run: cat $GITHUB_EVENT_PATH
         #echo $(jq -r '.label.name' $GITHUB_EVENT_PATH)
-        
+
+      - name: Check if pushDocker.sh script exists
+        run: |
+          if [ -e "$GITHUB_WORKSPACE/pushDocker.sh" ]; then
+            echo "pushDocker.sh script exists"
+          else
+            echo "pushDocker.sh script does not exist"
+          fi
+          
       - name: Check if PR is labeled as "publish docker"
         id: check_label 
         run: echo "publish=$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV && ls -l
