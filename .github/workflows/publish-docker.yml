@@ -11,6 +11,9 @@ jobs:
     #if: github.event.pull_request.merged == true
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This step checks out your repository
+
       - name: echo a thing or two
         run: cat $GITHUB_EVENT_PATH
         #echo $(jq -r '.label.name' $GITHUB_EVENT_PATH)
