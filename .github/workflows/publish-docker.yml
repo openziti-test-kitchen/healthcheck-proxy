@@ -1,0 +1,40 @@
+name: Publish Docker Images
+
+on:
+  push:
+  pull_request:
+    types: [labeled, closed]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    #if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This step checks out your repository
+
+      - name: echo a thing or two
+        run: cat $GITHUB_EVENT_PATH
+        #echo $(jq -r '.label.name' $GITHUB_EVENT_PATH)
+
+      - name: Check if pushDocker.sh script exists
+        run: |
+          if [ -e "$GITHUB_WORKSPACE/pushDocker.sh" ]; then
+            echo "pushDocker.sh script exists"
+          else
+            echo "pushDocker.sh script does not exist"
+          fi
+          
+      - name: Check if PR is labeled as "publish docker"
+        id: check_label 
+        run: echo "publish=$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+
+      - name: Execute Script
+        if: ${{ env.publish != '1' }}
+        run: $GITHUB_WORKSPACE/pushDocker.sh
+        
