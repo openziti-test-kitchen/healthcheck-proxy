@@ -22,4 +22,4 @@ jobs:
       - name: Execute Script
         if: ${{ env.publish != '1' }}
         run: |
-          ./publishDocker.sh
+          ./pushDocker.sh
