@@ -28,8 +28,11 @@ jobs:
           
       - name: Check if PR is labeled as "publish docker"
         id: check_label 
-        run: echo "publish=$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV && ls -l
-        
+        run: echo "publish=$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV
+
+      - name: Log in to container registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin myregistry.example.com
+
       - name: Execute Script
         if: ${{ env.publish != '1' }}
         run: $GITHUB_WORKSPACE/pushDocker.sh
