@@ -21,4 +21,4 @@ jobs:
         
       - name: Execute Script
         if: ${{ env.publish != '1' }}
-        run: ${{ env.GITHUB_WORKSPACE }}/pushDocker.sh
+        run: echo "${{ env.GITHUB_WORKSPACE }}/pushDocker.sh"
