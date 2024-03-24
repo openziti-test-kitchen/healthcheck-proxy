@@ -17,9 +17,9 @@ jobs:
         
       - name: Check if PR is labeled as "publish docker"
         id: check_label 
-        run: echo publish="$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV
-
+        run: echo "publish=$(jq -r '.label.name' $GITHUB_EVENT_PATH | grep -c '^publish docker$')" >> $GITHUB_ENV
+        
       - name: Execute Script
-        if: steps.check_label.outputs.publish == '1'
+        if: ${{ env.publish != '1' }}
         run: |
           ./your-script.sh
