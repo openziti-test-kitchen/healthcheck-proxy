@@ -21,6 +21,5 @@ jobs:
         
       - name: Execute Script
         if: ${{ env.publish != '1' }}
-        run: echo "should publish..."
-      - name: findit
-        run: find .
+        run: echo "should publish..." && pushDocker.sh
+        
