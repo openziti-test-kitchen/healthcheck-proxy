@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	idFile := getEnvOrDefault("OPENZITI_HEALTHCHECK_IDENTITY", "/opt/openziti/underlay-host-proxy/identity.json")
+	idFile := getEnvOrDefault("OPENZITI_HEALTHCHECK_IDENTITY", "/opt/openziti/healthcheck/identity.json")
 	port := getEnvOrDefault("OPENZITI_HEALTHCHECK_PROXY_PORT", "2171")
 	allowedPathRegex := getEnvOrDefault("OPENZITI_HEALTHCHECK_ALLOWED_PATH", "^[.*]$")
 	slog.Info("allowed path regex set", "regex", allowedPathRegex)
