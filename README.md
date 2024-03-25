@@ -61,7 +61,7 @@ docker run \
     --network-alias device-virtual.edgex.ziti \
     --network-alias support-notifications.edgex.ziti \
     --network-alias support-scheduler.edgex.ziti \
-    openziti/healthcheck-proxy
+    ghcr.io/openziti-test-kitchen/healthcheck-proxy/healthcheck-proxy:latest
 ```
 
 Breaking down each section we see:
@@ -91,7 +91,7 @@ Breaking down each section we see:
 * `--network-alias device-virtual.edgex.ziti`. See above.
 * `--network-alias support-notifications.edgex.ziti`. See above.
 * `--network-alias support-scheduler.edgex.ziti`. See above.
-* `openziti/healthcheck-proxy`. This is the container for docker to execute
+* `openziti/healthcheck-proxy`. This is the container for docker to execute, in GHCR
 
 ## Example of Creating/Authorizing an Identity
 This is just an example for how the identity for EdgeX Foundry was generated:
